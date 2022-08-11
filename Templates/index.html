@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <h2 class="text-center">Django 101 Blog</h2>
+      <div class="card card-body my-4">
+        <a href="/create" class="btn btn-primary mb-4 w-25"> Create new blog </a>
+        <table class="table table-bordered table-striped table-hover">
+          <thead class="table-primary">
+            <tr>
+              <th scope="col">Blog ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Option</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for blog in blogs %}
+            <tr>
+              <td>{{blog.blog_id}}</td>
+              <td>{{blog.title}}</td>
+              <td>{{blog.author_name}}</td>
+              <td>
+                <a href="/update/{{blog.pk}}" class="btn btn-sm btn-warning"
+                  >Update</a
+                >
+                <a href="/delete/{{blog.pk}}" class="btn btn-sm btn-danger"
+                  >Delete</a
+                >
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
